@@ -27,7 +27,7 @@
 
                         </header>
                         <div class="entry-content">
-                            {!!$post->description!!}
+                            {!! $post->description !!}
                             <div class="btn-continue-reading text-center text-uppercase">
                             
                                 <a href="{{route('post.show', $post->slug)}}" class="more-link">Continue Reading</a>

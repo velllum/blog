@@ -40,7 +40,7 @@
                         <a href="{{route('post.show', $post->slug)}}" class="overlay-text text-center">
                             <h5 class="text-uppercase">{{$post->title}}</h5>
 
-                            <p>{{$post->description}}</p>
+                            <p>{!! $post->description !!}</p>
                         </a>
                     </div>
                 </div>
