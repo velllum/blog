@@ -60,7 +60,7 @@ class Post extends Model
     {
         $post = new static;
         $post->fill($fields);
-        $post->user_id = Auth::user()->is_admin;
+        $post->user_id = 1;
         $post->save();
 
         return $post;

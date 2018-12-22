@@ -7,13 +7,11 @@
             <file>file:/C:/OSPanel/domains/blog/app/Http/Controllers/HomeController.php</file>
             <file>file:/C:/OSPanel/domains/blog/database/factories/ModelFactory.php</file>
             <file>file:/C:/OSPanel/domains/blog/resources/views/pages/login.blade.php</file>
-            <file>file:/C:/OSPanel/domains/blog/app/Post.php</file>
             <file>file:/C:/OSPanel/domains/blog/resources/views/layote.blade.php</file>
             <file>file:/C:/OSPanel/domains/blog/app/User.php</file>
             <file>file:/C:/OSPanel/domains/blog/resources/views/pages/_sidebar.blade.php</file>
             <file>file:/C:/OSPanel/domains/blog/app/Tag.php</file>
             <file>file:/C:/OSPanel/domains/blog/resources/views/pages/index.blade.php</file>
-            <file>file:/C:/OSPanel/domains/blog/app/Http/Controllers/Controller.php</file>
             <file>file:/C:/OSPanel/domains/blog/app/Providers/AppServiceProvider.php</file>
         </group>
     </open-files>
