@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
 
-    //связь с таблицей пост
+    //связь с таблицей пост многие(Comment) к одному(Post)
     public function post()
     {
-        return $this->hasOne(Post::class);
+        return $this->belongsTo(Post::class);
     }
 
-    //связь стаблицей юзер
+    //связь стаблицей юзер многие(Comment) к одному(User)
     public function author()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     //коментарий статус разрешен
@@ -41,6 +41,11 @@ class Comment extends Model
         }
 
         return $this->disAllow();
+    }
+    
+    public function remove()
+    {
+        $this->delete();
     }
 
 }

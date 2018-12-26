@@ -29,13 +29,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    //связь с таблицей пост
+    //связь с таблицей пост один(User) ко многим(Post)
     public function posts()
     {
         return $this->hasMany(Post::class);
     }
 
-    //связь с таблицей коментарии
+    //связь с таблицей коментарии один ко многим
     public function comments()
     {
         return $this->hasMany(Comment::class);

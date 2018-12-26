@@ -22,6 +22,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/profile', 'ProfileController@index');
     Route::post('/profile', 'ProfileController@store');
     Route::get('/logout', 'AuthController@logout');
+    Route::post('/comment', 'CommentsController@store');
 });
 
 //Закрытая группа для гостей
@@ -39,4 +40,9 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>'admin'], f
     Route::resource('/tags', 'TagsController');
     Route::resource('/users', 'UsersController');
     Route::resource('/posts', 'PostsController');
+    
+    Route::get('/comments', 'CommentsController@index')->name('comments.index');
+    Route::get('/comments/toggle/{id}', 'CommentsController@toggle')->name('comments.toggle');
+    Route::delete('/comments/{id}/destroy', 'CommentsController@destroy')->name('comment.destroy');
+    
 });

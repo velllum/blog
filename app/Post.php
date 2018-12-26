@@ -22,16 +22,21 @@ class Post extends Model
         'title', 'content', 'date', 'description'
     ];
 
-    //Связь с таблицей категориес
+    //Связь с таблицей категории многие(Post) к одному(Categories)
     public function categories()
     {
         return $this->belongsTo(Categories::class);
     }
 
-    //Связь с таблицей юзерс
+    //Связь с таблицей пользователь многие(Post) к одному(User)
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+    
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
     }
 
     //Связь с таблицей тагс
@@ -295,5 +300,11 @@ class Post extends Model
     {
         return self::orderBy('date', 'desc')->take(4)->get();
     }
-
+    
+    //Получить коментарии поста , через связь (comment())
+    public function getComments()
+    {
+        return $this->comment()->where('status',1)->get();
+    }
+    
 }

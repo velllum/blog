@@ -11,6 +11,7 @@ class Tag extends Model
     
     protected $fillable = ['title'];
 
+    //связь с таблицей пост многие(Tag) ко многим(Post)
     public function posts()
     {
         return $this->belongsToMany(
@@ -30,4 +31,5 @@ class Tag extends Model
             ]
         ];
     }
+    
 }

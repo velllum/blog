@@ -11,7 +11,7 @@ class Categories extends Model
     
     protected $fillable = ['title'];
 
-    //Связь с таблицей пост
+    //Связь с таблицей один(Categories) ко многим(Post)
     public function posts()
     {
         return $this->hasMany(Post::class);

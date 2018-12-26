@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Post;
 use App\Categories;
+use App\Comment;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
             $view->with('featuredPosts', Post::getFeaturedPosts());
             $view->with('recentPosts', Post::getRecentPosts());
             $view->with('categories', Categories::all());
+        });
+        
+        view()->composer('admin._sidebar', function($view){
+            $view->with('newCommentsCount', Comment::where('status',0)->count());
         });
     }
 
