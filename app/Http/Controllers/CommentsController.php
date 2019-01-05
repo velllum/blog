@@ -15,7 +15,7 @@ class CommentsController extends Controller
             'message' => 'required',
         ]);
         //dd(Auth::user()->id);
-        $comment = new Comment;
+        $comment = new Comment();
         $comment->text = $request->get('message');
         $comment->post_id = $request->get('post_id');
         $comment->user_id = Auth::user()->id;

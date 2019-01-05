@@ -34,6 +34,7 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
     
+    //Связь с таблицей один(Comment) ко многим(Post)
     public function comment()
     {
         return $this->hasMany(Comment::class);
@@ -65,7 +66,7 @@ class Post extends Model
     {
         $post = new static;
         $post->fill($fields);
-        $post->user_id = 1;
+        $post->user_id = Auth::user()->id;
         $post->save();
 
         return $post;
@@ -116,7 +117,7 @@ class Post extends Model
         /* $category = Categories::find($id);
           $this->categories()->save($category); */
 
-        $this->category_id = $id;
+        $this->categories_id = $id;
         $this->save();
     }
 
