@@ -9,6 +9,7 @@ use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -38,17 +39,17 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [ //провера на валидность
-           'name'=>'required',
-           'email'=>'required|email|unique:users',
-           'password'=>'required',
-           'avatar'=>'nullable|image'
+        $this->validate($request, [//провера на валидность
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required',
+            'avatar' => 'nullable|image'
         ]);
-        
+
         $user = User::add($request->all());
         $user->generatePassword($request->get('password'));
         $user->uploadeAvatar($request->file('avatar'));
-        
+
         return redirect()->route('users.index');
     }
 
@@ -74,22 +75,30 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        
+
         $this->validate($request, [
-           'name'=>'required',
-           'email'=>[
-               'required',
-               'email',
-               Rule::unique('users')->ignore($user->id),
-           ],
-           'avatar'=>'nullable|image'
+            'name' => 'required',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($user->id),
+            ],
+            'avatar' => 'nullable|image'
         ]);
-        
+
         $user->edit($request->all());
         $user->generatePassword($request->get('password'));
         $user->uploadeAvatar($request->file('avatar'));
-        
+
         return redirect()->route('users.index');
+    }
+
+    public function show($id)
+    {
+        $user = User::find($id);
+        $user->toggleBan();
+
+        return redirect()->back();
     }
 
     /**
@@ -102,7 +111,8 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $user->remow();
-        
+
         return redirect()->route('users.index');
     }
+
 }

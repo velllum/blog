@@ -32,12 +32,20 @@
                                        placeholder="password">
                             </div>
                         </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="text" name="description" class="form-control" id="description" 
+                                   placeholder="description" value="{{$user->description}}">
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-12">
                                 <input type="file" class="form-control" id="image" name="avatar">	
                             </div>
                         </div>
+                        
                         <button type="submit" class="btn send-btn">Update</button>
 
                     </form>

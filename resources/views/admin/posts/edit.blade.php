@@ -94,7 +94,6 @@
                                 $post->status,
                                 ['class'=>'minimal']
                             )}}
-                            <input type="checkbox" name="status" class="minimal">
                         </label>
                         <label>
                             Черновик

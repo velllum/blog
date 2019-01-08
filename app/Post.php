@@ -13,8 +13,6 @@ class Post extends Model
 
     use Sluggable;
 
-    const IS_FEATURED = 1;
-    const IS_STANDART = 0;
     const IS_DRAFT = 0;
     const IS_PUBLIC = 1;
 
@@ -76,7 +74,15 @@ class Post extends Model
     public function edit($fields)
     {
         $this->fill($fields);
+        $this->removeSlug();
         $this->save();
+    }
+    
+    public function removeSlug()
+    {
+        if($this->slug != null){
+            $this->delete();
+        }
     }
 
     //удаление поста и картинки (если есть)
@@ -167,14 +173,14 @@ class Post extends Model
     //установить статью для вывода (1)
     public function setFeatured()
     {
-        $this->status = Post::IS_FEATURED;
+        $this->is_featured = Post::IS_PUBLIC;
         $this->save();
     }
 
     //установить статью не выводится (0)
     public function setStandart()
     {
-        $this->status = Post::IS_STANDART;
+        $this->is_featured = Post::IS_DRAFT;
         $this->save();
     }
 
@@ -287,19 +293,19 @@ class Post extends Model
     //собирательные метод для вывода списка популярных постов (app/Providers/AppServiceProvider)
     public static function getPopularPosts()
     {
-        return self::orderBy('views','desc')->take(3)->get();
+        return self::orderBy('views','desc')->where('status', Post::IS_DRAFT)->take(3)->get();
     }
     
     //собирательные метод для вывода списка рекомендуемых постов (app/Providers/AppServiceProvider)
     public static function getFeaturedPosts()
     {
-        return self::where('is_featured', 1)->take(3)->get();
+        return self::where('is_featured', 1)->where('status', Post::IS_DRAFT)->take(3)->get();
     }
     
     //собирательные метод для вывода списка недавние постов (app/Providers/AppServiceProvider)
     public static function getRecentPosts()
     {
-        return self::orderBy('date', 'desc')->take(4)->get();
+        return self::orderBy('date', 'desc')->where('status', Post::IS_DRAFT)->take(4)->get();
     }
     
     //Получить коментарии поста , через связь (comment())

@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email',
+        'name', 'email', 'description'
     ];
 
     /**
@@ -148,13 +148,19 @@ class User extends Authenticatable
     }
 
     //перключатель на забаненный статус
-    public function toggleBan($value)
+    public function toggleBan()
     {
-        if ($value == null) {
+        if ($this->status == 1) {
             return $this->anban();
         }
 
         return $this->ban();
+    }
+    
+    //Находим каокой статус у пользователя проходящего аунтификацию, для проверки на бан
+    public static function getStatus($request)
+    {
+        return self::where('email',$request)->value('status');
     }
 
 }

@@ -38,15 +38,21 @@ class AuthController extends Controller
            'email' => 'required|email',
            'password' => 'required'
         ]);
-        
+
         if(Auth::attempt([
             'email' => $request->get('email'),
-            'password' => $request->get('password')
+            'password' => $request->get('password'),
+            'status' => 0
         ]))
         {
-          return redirect('/');  
+            return redirect('/')->with('status','Пользователь подтвержден');
         }
         
+        elseif(User::getStatus($request->get('email')) == 1)
+        {
+            return redirect()->back()->with('status','Пользователь с таким именем ЗАБАНЕН');
+        }
+
         return redirect()->back()->with('status','Неправильный логин или пароль');
     }
     

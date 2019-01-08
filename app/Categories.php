@@ -36,4 +36,14 @@ class Categories extends Model
 
         return $category;
     }
+    
+    //Обновление поля слаг
+    public function updateSlug()
+    {
+        if($this->slug != null){
+            $this->delete();
+        }
+        
+        $this->save();
+    }
 }

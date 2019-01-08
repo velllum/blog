@@ -24,16 +24,20 @@
             <div class="box-body">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Имя</label>
+                        <label for="exampleInputName">Имя</label>
                         <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="" value="{{old('name')}}">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">E-mail</label>
+                        <label for="exampleInputEmail">E-mail</label>
                         <input type="text" name="email" class="form-control" id="exampleInputEmail1" placeholder="" value="{{old('email')}}">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Пароль</label>
+                        <label for="exampleInputPassword">Пароль</label>
                         <input type="password" name="password" class="form-control" id="exampleInputEmail1" placeholder="" value="{{old('password')}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputDescription">Статус</label>
+                        <input type="text" name="description" class="form-control" id="exampleInputEmail1" placeholder="" value="{{old('description')}}">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputFile">Аватар</label>

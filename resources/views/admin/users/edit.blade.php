@@ -26,7 +26,7 @@
             <div class="box-body">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Имя</label>
+                        <label for="exampleInputName">Имя</label>
                         <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="" value="{{$user->name}}">
                     </div>
                     <div class="form-group">
@@ -34,13 +34,17 @@
                         <input type="text" name="email" class="form-control" id="exampleInputEmail1" placeholder="" value="{{$user->email}}">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Пароль</label>
+                        <label for="exampleInputPassword">Пароль</label>
                         <input type="password" name="password" class="form-control" id="exampleInputEmail1" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputDescription">Статус</label>
+                        <input type="text" name="description" class="form-control" id="exampleInputEmail1" placeholder="" value="{{$user->description}}">
                     </div>
                     <div class="form-group">
                         <img src="{{$user->getImage()}}" alt="" width="200" class="img-responsive">
                         <label for="exampleInputFile">Аватар</label>
-                        <input type="file" id="exampleInputFile">
+                        <input type="file" name="avatar" id="exampleInputFile">
 
                         <p class="help-block">Какое-нибудь уведомление о форматах..</p>
                     </div>

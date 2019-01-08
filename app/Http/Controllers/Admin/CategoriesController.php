@@ -43,6 +43,8 @@ class CategoriesController extends Controller
         
         $categories = Categories::find($id);
         $categories->update($request->all());
+        $categories->updateSlug();
+        
         return redirect()->route('categories.index');
     }
     

@@ -37,6 +37,7 @@
                             <th>Имя</th>
                             <th>E-mail</th>
                             <th>Аватар</th>
+                            <th>Статус</th>
                             <th>Действия</th>
                         </tr>
                     </thead>
@@ -49,7 +50,14 @@
                             <td>
                                 <img src="{{$user->getImage()}}" alt="" class="img-responsive" width="150">
                             </td>
+                            <td>{{$user->description}}</td>
                             <td>
+                                @if($user->status == 0)
+                                <a href="{{route('users.show', $user->id)}}" class="fa fa-lock"></a>
+                                @else
+                                <a href="{{route('users.show', $user->id)}}" class="fa fa-thumbs-o-up"></a> 
+                                @endif
+                                
                                 <a href="{{route('users.edit', $user->id)}}" class="fa fa-pencil"></a>
                                 {{Form::open(['route' => ['users.destroy', $user->id], 'method'=>'delete'])}}    
                                 <button type="submit" class="delete">
