@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\Tag;
 use App\Categories;
+//use Intervention\Image\Image;
 
 class PostsController extends Controller
 {
@@ -51,7 +52,17 @@ class PostsController extends Controller
         
         $post = Post::add($request->all());
         
-        $post->uploadImage($request->file('image'));
+        $image = \Image::make($request->file('image'));
+        
+        dd($image);
+        
+        $image->resize(null, 200, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        
+        
+        
+        $post->uploadImage($image);
         $post->setCategory($request->get('category_id'));
         $post->setTags($request->get('tags'));
         $post->toggleStatus($request->get('status'));
@@ -99,6 +110,7 @@ class PostsController extends Controller
         
         $post = Post::find($id);
         $post->edit($request->all());
+
         $post->uploadImage($request->file('image'));
         $post->setCategory($request->get('category_id'));
         $post->setTags($request->get('tags'));

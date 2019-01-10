@@ -100,10 +100,19 @@ class Post extends Model
         }
 
         $this->remowImage();
-        $fielname = str_random(10) . '.' . $image->extension();
-        $image->storeAs('uploads', $fielname);
+        
+        $obgectImage = \Image::make($image); //Создаем объект типа Intervention Image
+        $obgectImage->resize(null, 200, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $obgectImage->blur(15);
+        
+        $fielname = str_random(10) . '.' . $image->extension(); 
+        $imagePath = $image->storeAs('uploads', $fielname);
+        
         $this->image = $fielname;
-        $this->save();
+        $obgectImage->save($imagePath);
+
     }
     
     public function remowImage()
