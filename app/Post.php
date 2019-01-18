@@ -107,7 +107,7 @@ class Post extends Model
         });
         $obgectImage->blur(15);
         
-        $fielname = str_random(10) . '.' . $image->extension(); 
+        $fielname = str_random(10) . '.' . $image->extension();
         $imagePath = $image->storeAs('uploads', $fielname);
         
         $this->image = $fielname;

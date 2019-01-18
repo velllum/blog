@@ -1,0 +1,11 @@
+{
+    "emmet.triggerExpansionOnTab": true,
+    "blade.format.enable": true,
+    "emmet.includeLanguages": {
+        "*.blade.php": "html"
+    },
+    
+    // "files.associations": {
+    //     "*.blade.php": "html"
+    // }
+}

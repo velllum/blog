@@ -52,17 +52,7 @@ class PostsController extends Controller
         
         $post = Post::add($request->all());
         
-        $image = \Image::make($request->file('image'));
-        
-        dd($image);
-        
-        $image->resize(null, 200, function ($constraint) {
-            $constraint->aspectRatio();
-        });
-        
-        
-        
-        $post->uploadImage($image);
+        $post->uploadImage($request->file('image'));
         $post->setCategory($request->get('category_id'));
         $post->setTags($request->get('tags'));
         $post->toggleStatus($request->get('status'));

@@ -14,9 +14,9 @@
     <!-- Main content -->
     <section class="content">
         {{Form::open([
-            'route'=>['posts.update', $post->id],
-            'method'=>'put',
-            'files'=>true
+        'route'=>['posts.update', $post->id],
+        'method'=>'put',
+        'files'=>true
         ])}}
         <!-- Default box -->
         <div class="box">
@@ -28,7 +28,8 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Название</label>
-                        <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="" value="{{$post->title}}">
+                        <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder=""
+                            value="{{$post->title}}">
                     </div>
 
                     <div class="form-group">
@@ -41,21 +42,21 @@
                     <div class="form-group">
                         <label>Категория</label>
                         {{Form::select('category_id',
-                            $categories,
-                            $post->getCategoryId(),
-                            ['class' => 'form-control select2']
+                        $categories,
+                        $post->getCategoryId(),
+                        ['class' => 'form-control select2']
                         )}}
                     </div>
                     <div class="form-group">
                         <label>Теги</label>
                         {{Form::select('tags[]',
-                            $tags,
-                            $selectedTegs,
-                            [
-                                'class' => 'form-control select2',
-                                'multiple'=>'multiple',
-                                'data-placeholder'=>'Выберите теги'
-                            ]
+                        $tags,
+                        $selectedTegs,
+                        [
+                        'class' => 'form-control select2',
+                        'multiple'=>'multiple',
+                        'data-placeholder'=>'Выберите теги'
+                        ]
                         )}}
                     </div>
                     <!-- Date -->
@@ -75,10 +76,10 @@
                     <div class="form-group">
                         <label>
                             {{Form::checkbox(
-                                'is_featured', 
-                                '1', 
-                                $post->is_featured,
-                                ['class'=>'minimal']
+                            'is_featured',
+                            '1',
+                            $post->is_featured,
+                            ['class'=>'minimal']
                             )}}
                         </label>
                         <label>
@@ -89,10 +90,10 @@
                     <div class="form-group">
                         <label>
                             {{Form::checkbox(
-                                'status', 
-                                '1', 
-                                $post->status,
-                                ['class'=>'minimal']
+                            'status',
+                            '1',
+                            $post->status,
+                            ['class'=>'minimal']
                             )}}
                         </label>
                         <label>
