@@ -36,6 +36,7 @@
                             <th>Название</th>
                             <th>Категория</th>
                             <th>Теги</th>
+                            <th>Кол. просмотры</th>
                             <th>Картинка</th>
                             <th>Действия</th>
                         </tr>
@@ -47,6 +48,7 @@
                             <td>{{$post->title}}</td>
                             <td>{{$post->getCategoryTitle()}}</td>
                             <td>{{$post->getTagsTitle()}}</td>
+                            <td>{{$post->views}}</td>
                             <td>
                                 <img src="{{$post->getImage()}}" alt="" width="100">
                             </td>
